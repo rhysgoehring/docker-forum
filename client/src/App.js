@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const AppContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid green;
+`;
+
+class App extends React.Component {
+  state = {
+    posts: []
+  };
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts = async () => {
+    const { data } = await axios.get('http://localhost:8000/api/posts');
+    this.setState({ posts: data });
+  };
+
+  renderPosts = () => {
+    return this.state.posts.map(post => {
+      console.log(post);
+      return (
+        <li key={post.id}>{post.content}</li>
+      )
+    })
+  }
+  render() {
+    return (
+      <AppContainer>
+        <ul>
+          {this.renderPosts()}
+        </ul>
+      </AppContainer>
+    );
+  }
 }
 
 export default App;
