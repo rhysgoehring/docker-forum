@@ -25,7 +25,6 @@ class App extends React.Component {
 
   renderPosts = () => {
     return this.state.posts.map(post => {
-      console.log(post);
       return (
         <li key={post.id}>{post.content}</li>
       )
