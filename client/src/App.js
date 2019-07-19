@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   fetchPosts = async () => {
-    const { data } = await axios.get('http://localhost:8000/api/posts');
+    const { data } = await axios.get('/api/posts');
     this.setState({ posts: data });
   };
 

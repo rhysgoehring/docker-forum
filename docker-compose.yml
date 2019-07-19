@@ -2,7 +2,7 @@ version: '3'
 services:
   postgres:
     image: 'postgres:latest'
-  server:
+  api:
     build:
       dockerfile: Dockerfile.dev
       context: ./server
@@ -22,4 +22,4 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
-  
+
