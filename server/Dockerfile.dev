@@ -3,4 +3,7 @@ WORKDIR '/app'
 COPY ./package.json ./
 RUN npm install
 COPY . .
+CMD ["npm", "install", "knex" "--save"]
+CMD ["knex", "migrate:latest"]
+CMD ["knex, "seed:run"]
 CMD ["npm", "run", "dev"]
