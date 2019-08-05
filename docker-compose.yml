@@ -2,7 +2,19 @@ version: '3'
 services:
   postgres:
     image: 'postgres:latest'
+  nginx:
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '3050:80'
   api:
+    depends_on:
+      - postgres
     build:
       dockerfile: Dockerfile.dev
       context: ./server
@@ -16,6 +28,8 @@ services:
       - PGPASSWORD=postgres_password
       - PGDATABASE=postgres
   client:
+    depends_on:
+      - api
     build:
       dockerfile: Dockerfile.dev
       context: ./client
