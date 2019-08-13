@@ -4,7 +4,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const knex = require('./knex');
+const knex = require('./db/knex');
 
 require('dotenv').config();
 
