@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 
 const router = express.Router();
-const knex = require('../db/knex');
+const knex = require("../db/knex");
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const posts = await knex('posts').returning('*');
+    const posts = await knex("posts").returning("*");
     return res.json(posts);
   } catch (err) {
-    console.log('get posts error', err);
+    console.log("get posts error", err);
     return err;
   }
 });

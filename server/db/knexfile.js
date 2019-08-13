@@ -4,7 +4,7 @@ module.exports = {
   //   connection: 'postgres://localhost/docker-forum',
   // },
   development: {
-    client: 'pg',
+    client: "pg",
     connection: {
       host: process.env.PGHOST,
       port: process.env.PGPORT,
@@ -24,7 +24,7 @@ module.exports = {
     },
   },
   production: {
-    client: 'pg',
+    client: "pg",
     connection: {
       host: process.env.PGHOST,
       port: process.env.PGPORT,
