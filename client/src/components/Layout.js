@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 const MainContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: 2px solid green;
+  justify-content: ${({ justifyContent }) => justifyContent || "center"};
+  min-height: 100vh;
 `;
 
 export { MainContainer };

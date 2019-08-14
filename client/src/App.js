@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import GlobalStyles from "./GlobalStyles";
 import store from "./store";
 
-import { Routes } from "./Routes";
+import { Routes } from "./routes";
 
 const App = () => {
   return (

@@ -1,15 +1,15 @@
-import { FETCH_ALL_POSTS } from "../actions/types";
+import { SIGN_IN, SIGN_UP } from "../actions/types";
 
 const initialState = {
-  posts: []
+  user: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_ALL_POSTS:
+    case SIGN_IN:
       return {
         ...state,
-        posts: action.data
+        user: action.user
       };
     default:
       return {

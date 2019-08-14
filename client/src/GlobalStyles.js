@@ -17,11 +17,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Lato', sans-serif;
+    display: block;
     margin: 0;
     padding: 0;
     font-size: 1.6rem;
+    font-family: 'Lato', sans-serif;
   }
+
 `;
 
 export default GlobalStyles;

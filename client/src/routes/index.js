@@ -1,15 +1,15 @@
 import React, { useContext } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  __RouterContext
-} from "react-router-dom";
+import { Router, Switch, Route, Link, __RouterContext } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 
-import Home from "./pages/home";
-import CreatePost from "./pages/createPost";
+import history from "./history";
+import ProtectedRoute from "./ProtectedRoute";
+
+import LandingPage from "../pages/landing";
+import SignIn from "../pages/signIn";
+import SignUp from "../pages/signUp";
+import Home from "../pages/home";
+import CreatePost from "../pages/createPost";
 
 const useRouter = () => {
   return useContext(__RouterContext);
@@ -35,8 +35,11 @@ const AnimatedRoutes = () => {
   return transitions.map(({ item, props: transitonStyle, key }) => (
     <animated.div key={key} style={transitonStyle}>
       <Switch location={item}>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/posts/new" component={CreatePost} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/signup" component={SignUp} />
+        <ProtectedRoute exact path="/home" component={Home} />
+        <ProtectedRoute exact path="/posts/new" component={CreatePost} />
       </Switch>
     </animated.div>
   ));
@@ -44,7 +47,7 @@ const AnimatedRoutes = () => {
 
 const Routes = ({ children }) => {
   return (
-    <Router>
+    <Router history={history}>
       <AnimatedRoutes />
       {children}
     </Router>

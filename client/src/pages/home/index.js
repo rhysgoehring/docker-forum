@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchAllPosts } from "../../actions";
 import { MainContainer } from "../../components/Layout";
+import getToken from "../../util/getToken";
 
 class Home extends Component {
   constructor(props) {
@@ -15,10 +16,11 @@ class Home extends Component {
 
   componentDidMount() {
     this.getAllPosts();
+    getToken();
   }
 
   getAllPosts = async () => {
-    const { data } = await this.props.fetchAllPosts();
+    const data = await this.props.fetchAllPosts();
     console.log("component_data", data);
     this.setState({
       posts: data
